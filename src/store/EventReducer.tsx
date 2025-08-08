@@ -32,6 +32,7 @@ const EventReducer = (
           event.id === action.payload.id ? action.payload : event
         ),
       };
+
     default:
       return state;
   }

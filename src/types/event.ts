@@ -21,7 +21,8 @@ export type Action =
   | { type: "FETCH_ITEMS_FAILURE"; payload: string }
   | { type: "ADD_EVENT"; payload: IEvent }
   | { type: "DELETE_EVENT"; payload: string }
-  | { type: "UPDATE_EVENT"; payload: IEvent };
+  | { type: "UPDATE_EVENT"; payload: IEvent }
+  | { type: "SET_FILTER"; payload: Date };
 
 export const InitialState: InitialStateType = {
   events: [],

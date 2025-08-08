@@ -47,6 +47,7 @@ export default function EventForm({
 
   async function handleSubmit(e: any) {
     e.preventDefault();
+
     const eventData: Omit<IEvent, "id"> = {
       title: formData.title,
       description: formData.description,
@@ -59,10 +60,14 @@ export default function EventForm({
     } else {
       addEvent(eventData);
     }
+
+    navigate("/");
+  }
+  function handleCancel() {
     navigate("/");
   }
   return (
-    <section className="border border-secondary rounded-sm p-4 flex flex-col gap-6 max-w-3xl">
+    <div className="rounded-sm p-4  max-w-3xl  ">
       <form
         class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
         onSubmit={handleSubmit}
@@ -79,7 +84,6 @@ export default function EventForm({
             name="title"
             onChange={handleInputChange}
             value={formData.title}
-            required
           />
         </div>
         <div class="mb-4">
@@ -89,15 +93,13 @@ export default function EventForm({
           >
             Description
           </label>
-          <input
+          <textarea
             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            type="text"
             placeholder="Event Description"
             id="description"
             name="description"
             onChange={handleInputChange}
             value={formData.description}
-            required
           />
         </div>
         <div class="mb-4">
@@ -106,13 +108,12 @@ export default function EventForm({
           </label>
           <input
             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            type="text"
+            type="date"
             placeholder="Event Date"
             id="date"
             name="date"
             onChange={handleInputChange}
             value={formData.date}
-            required
           />
         </div>
         <div class="mb-4">
@@ -130,7 +131,6 @@ export default function EventForm({
             name="location"
             onChange={handleInputChange}
             value={formData.location}
-            required
           />
         </div>
         <div class="mb-4">
@@ -148,25 +148,25 @@ export default function EventForm({
             name="organizer"
             onChange={handleInputChange}
             value={formData.organizer}
-            required
           />
         </div>
-        <div class="flex items-center justify-between">
+        <div class="flex gap-8">
           <button
-            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            class="bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="submit"
           >
             {isEditing ? "Update Event" : "Create Event"}
           </button>
 
           <button
-            class="text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            class=" font-bold border-secondary bg-white py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="button"
+            onClick={handleCancel}
           >
             Cancel
           </button>
         </div>
       </form>
-    </section>
+    </div>
   );
 }
