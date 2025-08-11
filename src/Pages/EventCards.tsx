@@ -3,27 +3,40 @@ import type { IEvent } from "../types/event";
 import { Calendar, MapPin } from "lucide-react";
 
 export default function EventCard({ event }: { event: IEvent }) {
-  const { id, title, description, date, location, organizer } = event;
+  const { id, title, description, date, location, organizer, imageUrl } = event;
+  const dateString = date; // Example YYYY-MM-DD string
+  const dateObject = new Date(dateString);
+  const monthNameShort = dateObject.toLocaleString("en-US", { month: "short" });
+  const dayOfMonth = dateObject.toLocaleString("en-US", { day: "2-digit" });
   return (
     <Link
       to={`/event/${id}`}
-      className="shadow-sm shadow-secondary hover:shadow-2xl duration-200 p-6 grid grid-rows-[min-content_min-content_1fr] gap-6"
+      className="grid grid-rows-[min-content_min-content_1fr]"
     >
-      <div className="space-y-2">
-        <h2 className="text-1xl font-medium text-secondary capitalize">
-          {title}
-        </h2>
-        <p className=" line-clamp-3"> {description}</p>
-      </div>
-      <div className="flex flex-col gap-4 *:flex *:gap-2  *:text-thin">
-        <p>
-          <Calendar className="text-thin" /> {date}
-        </p>
-
-        <p>
-          <MapPin className="text-thin" /> {location}
-        </p>
-        <p>Organizer: {organizer}</p>
+      <div class="rounded overflow-hidden shadow-lg relative duration-200 ">
+        <div class="max-h-80 min-h-50 overflow-y-hidden">
+          <img
+            class="w-full"
+            src={imageUrl}
+            loading="lazy"
+            alt="Sunset in the mountains"
+          />
+          <div className="absolute top-3 right-3 bg-teal-500 p-2 text-center text-white">
+            <p>{monthNameShort}</p>
+            <p className="text-2xl">{dayOfMonth}</p>
+          </div>
+        </div>
+        <div class="px-6 py-4">
+          <div className="space-y-2">
+            <h2 className="text-1xl font-black text-secondary capitalize">
+              {title}
+            </h2>
+            <p className=" line-clamp-3 font-light"> {description}</p>
+          </div>
+          <div className="flex flex-col gap-4  font-light">
+            <p>Organizer: {organizer}</p>
+          </div>
+        </div>
       </div>
     </Link>
   );

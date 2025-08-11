@@ -7,6 +7,7 @@ export interface IEvent {
   date: string;
   location: string;
   organizer: string;
+  imageUrl: string;
 }
 
 export interface InitialStateType {

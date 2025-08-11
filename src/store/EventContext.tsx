@@ -15,7 +15,7 @@ export const EventContextProvider = ({ children }: { children: ReactNode }) => {
   const [state, dispatch] = useReducer(EventReducer, InitialState);
 
   async function addEvent(eventData: Omit<IEvent, "id">) {
-    const response = await fetch("http://localhost:3000/events", {
+    const response = await fetch("http://localhost:8000/events", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(eventData),
@@ -25,7 +25,7 @@ export const EventContextProvider = ({ children }: { children: ReactNode }) => {
   }
 
   async function deleteEvent(id: string) {
-    await fetch(`http://localhost:3000/events/${id}`, {
+    await fetch(`http://localhost:8000/events/${id}`, {
       method: "DELETE",
     });
 
@@ -35,7 +35,7 @@ export const EventContextProvider = ({ children }: { children: ReactNode }) => {
     });
   }
   async function updateEvent(event: IEvent) {
-    const response = await fetch(`http://localhost:3000/events/${event.id}`, {
+    const response = await fetch(`http://localhost:8000/events/${event.id}`, {
       method: "PUT", // or 'PATCH'
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(event),
@@ -48,7 +48,7 @@ export const EventContextProvider = ({ children }: { children: ReactNode }) => {
     const fetchItems = async () => {
       dispatch({ type: "FETCH_ITEMS_REQUEST" });
       try {
-        const response = await fetch("http://localhost:3000/events");
+        const response = await fetch("http://localhost:8000/events");
         if (!response.ok) {
           throw new Error("Failed to fetch items");
         }

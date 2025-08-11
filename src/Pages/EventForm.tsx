@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "preact/hooks";
 import type { IEvent } from "../types/event";
 import { EventContext } from "../store/EventContext";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 export default function EventForm({
   isEditing = false,
@@ -12,7 +12,9 @@ export default function EventForm({
   if (!context) {
     throw new Error("Error");
   }
+
   const { state, addEvent, updateEvent } = context;
+
   const navigate = useNavigate();
   const { id } = useParams();
   const [formData, setFormData] = useState({
@@ -21,7 +23,21 @@ export default function EventForm({
     date: "",
     location: "",
     organizer: "",
+    imageUrl: "",
   });
+  const [selectedFile, setSelectedFile] = useState<string | null>(null);
+  const [previousImageUrl, setPreviousImageUrl] = useState("event1.webp");
+
+  function handleChange(e: any) {
+    const file = e.target.files[0];
+    if (file) {
+      setSelectedFile(file);
+      setPreviousImageUrl(URL.createObjectURL(file));
+    } else {
+      setSelectedFile(null);
+      setPreviousImageUrl(previousImageUrl || "");
+    }
+  }
   function handleInputChange(event: any) {
     const { name, value } = event.target;
     setFormData((prevData) => ({
@@ -32,7 +48,6 @@ export default function EventForm({
   useEffect(() => {
     if (isEditing && id) {
       const eventToEdit = state.events.find((event) => event.id === id);
-
       if (eventToEdit) {
         setFormData({
           title: eventToEdit.title,
@@ -40,6 +55,7 @@ export default function EventForm({
           date: eventToEdit.date,
           location: eventToEdit.location,
           organizer: eventToEdit.organizer,
+          imageUrl: eventToEdit.imageUrl,
         });
       }
     }
@@ -47,13 +63,18 @@ export default function EventForm({
 
   async function handleSubmit(e: any) {
     e.preventDefault();
-
+    if (previousImageUrl) {
+      formData.imageUrl = previousImageUrl;
+    } else if (selectedFile) {
+      formData.imageUrl = selectedFile;
+    }
     const eventData: Omit<IEvent, "id"> = {
       title: formData.title,
       description: formData.description,
       date: formData.date,
       location: formData.location,
       organizer: formData.organizer,
+      imageUrl: formData.imageUrl,
     };
     if (isEditing && id) {
       updateEvent({ id, ...eventData });
@@ -150,6 +171,21 @@ export default function EventForm({
             value={formData.organizer}
           />
         </div>
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="Image">
+            {isEditing ? "Existing Event Image" : "Event Image"}
+          </label>
+          <input
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            type="file"
+            placeholder="Event Image"
+            id="imageUrl"
+            name="imageUrl"
+            onChange={handleChange}
+          />
+          {selectedFile && <img src={previousImageUrl} />}
+        </div>
+
         <div class="flex gap-8">
           <button
             class="bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"

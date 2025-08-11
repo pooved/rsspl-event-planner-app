@@ -1,44 +1,40 @@
 {
   "events": [
     {
-      "id": "bbcc",
-      "title": "Pooja Music",
-      "description": "Lorem ipsum, placeholder or dummy text used in typesetting and graphic design for previewing layouts. It features scrambled Latin text, which emphasizes the design over content of the layout. It is the standard placeholder text of the printing and publishing industries.",
-      "date": "2025-08-30",
-      "location": "Panjim",
-      "organizer": "Pooja Music"
-    },
-    {
-      "id": "d6f9",
-      "title": "VishalMusic",
-      "description": "Lorem ipsum, placeholder or dummy text used in typesetting and graphic design for previewing layouts. It features scrambled Latin text, which emphasizes the design over content of the layout. It is the standard placeholder text of the printing and publishing industries.",
-      "date": "2025-08-11",
-      "location": "Panjim",
-      "organizer": "Vishal Music"
-    },
-    {
-      "id": "e815",
+      "id": "829b",
       "title": "Adit Music",
-      "description": "Lorem ipsum, placeholder or dummy text used in typesetting and graphic design for previewing layouts. It features scrambled Latin text, which emphasizes the design over content of the layout. It is the standard placeholder text of the printing and publishing industries.",
-      "date": "2025-08-30",
-      "location": "Panjim",
-      "organizer": "Adit Music"
+      "description": "Lorem ipsum is a dummy text without any sense. It is a sequence of Latin words that, as they are positioned, do not form sentences with a complete sense, but give life to a test text useful to fill spaces that will subsequently be occupied from ad hoc texts composed by communication professionals.",
+      "date": "2025-08-12",
+      "location": "reererer",
+      "organizer": "2222",
+      "imageUrl": "blob:http://localhost:5173/40ec33b9-67d4-4635-83c8-f7bc92c38928"
     },
     {
-      "id": "2926",
+      "id": "064f",
       "title": "Adit Music",
-      "description": "Lorem ipsum, placeholder or dummy text used in typesetting and graphic design for previewing layouts. It features scrambled Latin text, which emphasizes the design over content of the layout. It is the standard placeholder text of the printing and publishing industries.",
-      "date": "2025-08-30",
-      "location": "Panjim",
-      "organizer": "Adit Music"
+      "description": "Lorem ipsum is a dummy text without any sense. It is a sequence of Latin words that, as they are positioned, do not form sentences with a complete sense, but give life to a test text useful to fill spaces that will subsequently be occupied from ad hoc texts composed by communication professionals.",
+      "date": "2025-08-12",
+      "location": "reererer",
+      "organizer": "33333",
+      "imageUrl": "blob:http://localhost:5173/3b3a3d63-87ce-4fcf-9fef-8d88439f29d8"
     },
     {
-      "id": "80f7",
+      "id": "a31a",
       "title": "Adit Music",
-      "description": "'en-CA'",
-      "date": "2025-07-10",
-      "location": "Panjim",
-      "organizer": "Adit Music"
+      "description": "Lorem ipsum is a dummy text without any sense. It is a sequence of Latin words that, as they are positioned, do not form sentences with a complete sense, but give life to a test text useful to fill spaces that will subsequently be occupied from ad hoc texts composed by communication professionals.",
+      "date": "2025-08-12",
+      "location": "reererer",
+      "organizer": "3333",
+      "imageUrl": "blob:http://localhost:5173/5b536d5d-3154-4c65-b171-fddd286342ce"
+    },
+    {
+      "id": "e844",
+      "title": "Adit Music",
+      "description": "sdsd",
+      "date": "2025-08-12",
+      "location": "reererer",
+      "organizer": "3333",
+      "imageUrl": "blob:http://localhost:5173/628995f7-61c4-4177-9acb-79dc67f7d69a"
     }
   ]
 }
