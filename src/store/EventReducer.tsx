@@ -12,7 +12,12 @@ const EventReducer = (
     case "FETCH_ITEMS_REQUEST":
       return { ...state, loading: true, error: null };
     case "FETCH_ITEMS_SUCCESS":
-      return { ...state, loading: false, events: action.payload };
+      return {
+        ...state,
+        loading: false,
+        events: action.payload.events,
+        category: action.payload.category,
+      };
     case "FETCH_ITEMS_FAILURE":
       return { ...state, loading: false, error: action.payload };
     case "ADD_EVENT":

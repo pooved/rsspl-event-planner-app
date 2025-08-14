@@ -35,6 +35,115 @@
       "location": "reererer",
       "organizer": "3333",
       "imageUrl": "blob:http://localhost:5173/628995f7-61c4-4177-9acb-79dc67f7d69a"
+    },
+    {
+      "id": "4115",
+      "title": "Adit Music",
+      "description": "Lorem ipsum, placeholder or dummy text used in typesetting and graphic design for previewing layouts. It features scrambled Latin text, which emphasizes the design over content of the layout. It is the standard placeholder text of the printing and publishing industries.",
+      "date": "2025-08-12",
+      "location": "reererer",
+      "organizer": "2222",
+      "imageUrl": "blob:http://localhost:5173/c7b8fdf5-b6b0-48ad-ad07-cffbe0b76420"
+    },
+    {
+      "id": "f412",
+      "title": "Adit Music",
+      "description": "n",
+      "date": "2025-08-12",
+      "location": "reererer",
+      "organizer": "2222",
+      "imageUrl": "event1.webp",
+      "category": ""
+    },
+    {
+      "id": "75e6",
+      "title": "Adit Music",
+      "description": "dsfddgdg",
+      "date": "2025-08-12",
+      "location": "Panjim",
+      "organizer": "dsd",
+      "imageUrl": "event1.webp",
+      "category": ""
+    },
+    {
+      "id": "030f",
+      "title": "Adit Music",
+      "description": "ytyt",
+      "date": "2025-08-12",
+      "location": "Panjim",
+      "organizer": "dsd",
+      "imageUrl": "event1.webp",
+      "category": ""
+    },
+    {
+      "id": "d13c",
+      "title": "",
+      "description": "",
+      "date": "",
+      "location": "",
+      "organizer": "",
+      "imageUrl": "event1.webp",
+      "category": ""
+    },
+    {
+      "id": "0fb1",
+      "title": "Adit Music",
+      "description": "",
+      "date": "",
+      "location": "",
+      "organizer": "",
+      "imageUrl": "event1.webp",
+      "category": "4115"
+    },
+    {
+      "id": "f443",
+      "title": "Adit Music",
+      "description": "",
+      "date": "",
+      "location": "",
+      "organizer": "",
+      "imageUrl": "event1.webp",
+      "category": "4115"
+    },
+    {
+      "id": "88d1",
+      "title": "Adit Music",
+      "description": "",
+      "date": "2025-08-13",
+      "location": "Panjim",
+      "organizer": "dsd",
+      "imageUrl": "event1.webp",
+      "category": "music"
+    },
+    {
+      "id": "5a82",
+      "title": "Adit Music",
+      "description": "ghghg",
+      "date": "2025-08-13",
+      "location": "Panjim",
+      "organizer": "dsd",
+      "imageUrl": "event1.webp",
+      "category": "dance"
+    },
+    {
+      "id": "ef66",
+      "title": "Adit Music",
+      "description": "Lorem ipsum dolor sit amet . The graphic and typographic operators know this well, in reality all the professions dealing with the universe of communication have a stable relationship with these words, but what is it? Lorem ipsum is a dummy text without any sense.\n\nIt is a sequence of Latin words that, as they are positioned, do not form sentences with a complete sense, but give life to a test text useful to fill spaces that will subsequently be occupied from ad hoc texts composed by communication professionals.",
+      "date": "2025-08-15",
+      "location": "Panjim",
+      "organizer": "dsd",
+      "imageUrl": "blob:http://localhost:5173/4509e19b-fe7b-40d0-8a07-c25def42b762",
+      "category": "music"
+    }
+  ],
+  "category": [
+    {
+      "id": "4115",
+      "name": "music"
+    },
+    {
+      "id": "222",
+      "name": "dance"
     }
   ]
 }

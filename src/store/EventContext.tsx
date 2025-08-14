@@ -2,6 +2,7 @@ import { createContext } from "preact";
 import {
   InitialState,
   type EventContextProps,
+  type ICategory,
   type IEvent,
 } from "../types/event";
 import { useEffect, useReducer, type ReactNode } from "preact/compat";
@@ -49,11 +50,16 @@ export const EventContextProvider = ({ children }: { children: ReactNode }) => {
       dispatch({ type: "FETCH_ITEMS_REQUEST" });
       try {
         const response = await fetch("http://localhost:8000/events");
+        const response1 = await fetch("http://localhost:8000/category");
         if (!response.ok) {
           throw new Error("Failed to fetch items");
         }
         const data: IEvent[] = await response.json();
-        dispatch({ type: "FETCH_ITEMS_SUCCESS", payload: data });
+        const cat: ICategory[] = await response1.json();
+        dispatch({
+          type: "FETCH_ITEMS_SUCCESS",
+          payload: { events: data, category: cat },
+        });
       } catch (error: any) {
         dispatch({ type: "FETCH_ITEMS_FAILURE", payload: error.message });
       }

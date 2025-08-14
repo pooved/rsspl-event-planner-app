@@ -14,7 +14,7 @@ export default function EventForm({
   }
 
   const { state, addEvent, updateEvent } = context;
-
+  const { category } = state;
   const navigate = useNavigate();
   const { id } = useParams();
   const [formData, setFormData] = useState({
@@ -24,10 +24,10 @@ export default function EventForm({
     location: "",
     organizer: "",
     imageUrl: "",
+    category: "",
   });
   const [selectedFile, setSelectedFile] = useState<string | null>(null);
   const [previousImageUrl, setPreviousImageUrl] = useState("event1.webp");
-
   function handleChange(e: any) {
     const file = e.target.files[0];
     if (file) {
@@ -56,6 +56,7 @@ export default function EventForm({
           location: eventToEdit.location,
           organizer: eventToEdit.organizer,
           imageUrl: eventToEdit.imageUrl,
+          category: eventToEdit.category,
         });
       }
     }
@@ -75,6 +76,7 @@ export default function EventForm({
       location: formData.location,
       organizer: formData.organizer,
       imageUrl: formData.imageUrl,
+      category: formData.category,
     };
     if (isEditing && id) {
       updateEvent({ id, ...eventData });
@@ -170,6 +172,26 @@ export default function EventForm({
             onChange={handleInputChange}
             value={formData.organizer}
           />
+        </div>
+        <div class="mb-4">
+          <label
+            class="block text-gray-700 text-sm font-bold mb-2"
+            for="organizer"
+          >
+            Event Category
+          </label>
+          <select
+            name="category"
+            value={formData.category}
+            onChange={handleInputChange}
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          >
+            <option selected>Choose a category</option>
+
+            {category.map((option) => {
+              return <option value={option.name}>{option.name}</option>;
+            })}
+          </select>
         </div>
         <div class="mb-4">
           <label class="block text-gray-700 text-sm font-bold mb-2" for="Image">

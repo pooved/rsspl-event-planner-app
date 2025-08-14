@@ -8,17 +8,25 @@ export interface IEvent {
   location: string;
   organizer: string;
   imageUrl: string;
+  category: string;
 }
-
+export interface ICategory {
+  id: "string";
+  name: "string";
+}
 export interface InitialStateType {
   events: IEvent[];
+  category: ICategory[];
   loading: boolean;
   error: string | null;
 }
 
 export type Action =
   | { type: "FETCH_ITEMS_REQUEST" }
-  | { type: "FETCH_ITEMS_SUCCESS"; payload: IEvent[] }
+  | {
+      type: "FETCH_ITEMS_SUCCESS";
+      payload: { events: IEvent[]; category: ICategory[] };
+    }
   | { type: "FETCH_ITEMS_FAILURE"; payload: string }
   | { type: "ADD_EVENT"; payload: IEvent }
   | { type: "DELETE_EVENT"; payload: string }
@@ -27,6 +35,7 @@ export type Action =
 
 export const InitialState: InitialStateType = {
   events: [],
+  category: [],
   loading: false,
   error: null,
 };
@@ -37,4 +46,9 @@ export interface EventContextProps {
   addEvent: (event: Omit<IEvent, "id">) => void;
   deleteEvent: (id: string) => void;
   updateEvent: (event: IEvent) => void;
+}
+export interface FilterCriteria {
+  searchText: string;
+  category: string;
+  date: Date | null;
 }

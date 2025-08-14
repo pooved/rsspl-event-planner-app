@@ -10,11 +10,11 @@ export default function EventListingPage() {
     throw new Error("Error");
   }
   const { state } = context;
-  const { events } = state;
+  const { events, category } = state;
   return (
     <>
-      <UpComingEventListing events={events} />
-      <PastEventListing events={events} />
+      <UpComingEventListing events={events} category={category} />
+      <PastEventListing events={events} category={category} />
     </>
   );
 }

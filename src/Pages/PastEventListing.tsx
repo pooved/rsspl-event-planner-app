@@ -1,9 +1,15 @@
 import { useState } from "preact/hooks";
 import PaginationEvent from "../components/PaginationEvent";
-import type { IEvent } from "../types/event";
+import type { FilterCriteria, ICategory, IEvent } from "../types/event";
 import EventCards from "./EventCards";
 
-export default function PastEventListing({ events }: { events: IEvent[] }) {
+export default function PastEventListing({
+  events,
+  category,
+}: {
+  events: IEvent[];
+  category: ICategory[];
+}) {
   const filterEvent = new Date();
 
   const pastEvents = events.filter(
