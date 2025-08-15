@@ -134,6 +134,26 @@
       "organizer": "dsd",
       "imageUrl": "blob:http://localhost:5173/4509e19b-fe7b-40d0-8a07-c25def42b762",
       "category": "music"
+    },
+    {
+      "id": "cc6d",
+      "title": "Adit Music",
+      "description": "kjkjk",
+      "date": "2025-08-16",
+      "location": "Panjim",
+      "organizer": "dsd",
+      "imageUrl": "blob:http://localhost:5174/9dad08c9-0768-4772-ac98-cbcb65c0d8fa",
+      "category": "music"
+    },
+    {
+      "id": "ef2f",
+      "title": "Adit Music",
+      "description": "gfg",
+      "date": "2025-08-16",
+      "location": "Panjim",
+      "organizer": "dsd",
+      "imageUrl": "blob:http://localhost:5173/f632fd25-1107-4fc0-bba9-4fc325761629",
+      "category": "dance"
     }
   ],
   "category": [
