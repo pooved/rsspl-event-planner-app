@@ -1,5 +1,7 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
-.active {
-  background-color: teal;
+@theme {
+  --color-light: oklch(70.4% 0.14 182.503);
+  --color-dark: #181818;
 }

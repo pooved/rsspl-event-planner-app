@@ -1,9 +1,8 @@
 import { useContext } from "preact/hooks";
-import { EventContext } from "../store/EventContext";
-import UpComingEventListing from "./UpComingEventListing";
 import PastEventListing from "./PastEventListing";
+import { EventContext } from "../store/EventContext";
 
-export default function EventListingPage() {
+export default function PastEvent() {
   const context = useContext(EventContext);
 
   if (!context) {
@@ -13,7 +12,7 @@ export default function EventListingPage() {
   const { events, category } = state;
   return (
     <>
-      <UpComingEventListing events={events} category={category} />
+      <PastEventListing events={events} category={category} />
     </>
   );
 }

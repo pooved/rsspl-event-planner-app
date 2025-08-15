@@ -85,10 +85,10 @@ export default function UpComingEventListing({
 
   return (
     <section className="flex flex-col gap-8">
-      <div className="flex">
+      <div className="flex justify-between">
         <h1 className="text-2xl font-medium text-secondary">Upcoming Events</h1>
         <button
-          class="bg-transparent flex-grow  font-normal mx-2  border-transparent flex justify-end"
+          class="bg-transparent  font-normal mx-2  border-transparent"
           onClick={toggleCollapse}
         >
           <ListFilter />

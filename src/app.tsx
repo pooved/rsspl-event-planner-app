@@ -6,6 +6,8 @@ import Layout from "./layout/Layout";
 import NotFoundPage from "./Pages/NotFoundPage";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { EventContextProvider } from "./store/EventContext";
+import PastEventListing from "./Pages/PastEventListing";
+import PastEventPage from "./Pages/PastEventPage";
 
 const routes = [
   {
@@ -28,6 +30,10 @@ const routes = [
       {
         path: "event/:id",
         element: <EventDetailsPage />,
+      },
+      {
+        path: "past",
+        element: <PastEventPage />,
       },
     ],
   },

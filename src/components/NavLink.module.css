@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+.active {
+  color: oklch(100% 0.00011 271.152);
+}

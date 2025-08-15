@@ -6,6 +6,7 @@ export default function BookMark({ event }: { event: IEvent }) {
   const [isBookMarked, setIsBookMarked] = useState(false);
 
   useEffect(() => {
+    // Check localStorage
     const storedBookMarks = JSON.parse(
       localStorage.getItem("bookmarks") || "[]"
     );
@@ -15,8 +16,10 @@ export default function BookMark({ event }: { event: IEvent }) {
   const handleBookMarkToggle = () => {
     let storedBookMarks = JSON.parse(localStorage.getItem("bookmarks") || "[]");
     if (isBookMarked) {
+      // Remove from bookmarks
       storedBookMarks = storedBookMarks.filter((id: any) => id !== event.id);
     } else {
+      // Add to bookmarks
       storedBookMarks.push(event.id);
     }
     localStorage.setItem("bookmarks", JSON.stringify(storedBookMarks));

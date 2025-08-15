@@ -10,7 +10,7 @@ export default function EventCard({ event }: { event: IEvent }) {
   const monthNameShort = dateObject.toLocaleString("en-US", { month: "short" });
   const dayOfMonth = dateObject.toLocaleString("en-US", { day: "2-digit" });
   return (
-    <div className="grid grid-rows-[min-content_min-content_1fr] rounded overflow-hidden shadow-lg relative duration-200 ">
+    <div className="grid grid-rows-[min-content_min-content_1fr] rounded dark:bg-dark dark:text-white overflow-hidden shadow-lg relative duration-200 ">
       <div class="max-h-80 min-h-50 overflow-y-hidden">
         <img
           class="w-full"
@@ -18,7 +18,7 @@ export default function EventCard({ event }: { event: IEvent }) {
           loading="lazy"
           alt="Sunset in the mountains"
         />
-        <div className="absolute top-3 right-3 bg-teal-500 p-2 text-center text-white">
+        <div className="absolute top-3 right-3 bg-light text-white  p-2 text-center">
           <p>{monthNameShort}</p>
           <p className="text-2xl">{dayOfMonth}</p>
         </div>
