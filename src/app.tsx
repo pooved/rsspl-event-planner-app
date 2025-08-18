@@ -6,7 +6,7 @@ import Layout from "./layout/Layout";
 import NotFoundPage from "./Pages/NotFoundPage";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { EventContextProvider } from "./store/EventContext";
-import PastEventListing from "./Pages/PastEventListing";
+import PastEventListing from "./components/PastEventListing";
 import PastEventPage from "./Pages/PastEventPage";
 
 const routes = [

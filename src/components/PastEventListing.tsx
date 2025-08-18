@@ -1,63 +1,56 @@
 import { useMemo, useState } from "preact/hooks";
-import PaginationEvent from "../components/PaginationEvent";
+import PaginationEvent from "./PaginationEvent";
 import type { FilterCriteria, ICategory, IEvent } from "../types/event";
 import EventCards from "./EventCards";
 import DatePicker from "react-datepicker"; // Example using react-datepicker
 import "react-datepicker/dist/react-datepicker.css";
-import { CalculatorIcon, Funnel, ListFilter } from "lucide-react";
-
-export default function UpComingEventListing({
+import { ListFilter } from "lucide-react";
+export default function PastEventListing({
   events,
   category,
 }: {
   events: IEvent[];
   category: ICategory[];
 }) {
+  const filterEvent = new Date();
+
   const [filters, setFilters] = useState<FilterCriteria>({
     searchText: "",
     category: "",
     date: new Date(),
   });
 
-  const filterEvent = new Date();
-  const upcomingEvents = events.filter(
-    (event) => event.date > filterEvent.toLocaleDateString("en-CA")
+  const pastEvents = events.filter(
+    (event) => event.date <= filterEvent.toLocaleDateString("en-CA")
   );
-
-  function onchange(e: any) {
-    setFilters((prev) => ({ ...prev, searchText: e.target.value }));
-  }
-
   const [currentPage, setCurrentPage] = useState(1);
-  const recordsPerPage = 6;
+  const recordsPerPage = 3;
   const lastIndex = currentPage * recordsPerPage;
   const firstIndex = lastIndex - recordsPerPage;
-  const upcomingEventsList = upcomingEvents.slice(firstIndex, lastIndex);
-  const nPageUpcomingEvents = Math.ceil(upcomingEvents.length / recordsPerPage);
+  const pastEventsList = pastEvents.slice(firstIndex, lastIndex);
+  const nPagePastEvents = Math.ceil(pastEvents.length / recordsPerPage);
 
   const [startDate, setStartDate] = useState<Date | null>(null);
   const [endDate, setEndDate] = useState<Date | null>(null);
   const [isOPen, setIsOpen] = useState(false);
-
   const toggleCollapse = () => {
     setIsOpen(!isOPen); // Toggle the state
   };
   function prePage() {
-    if (currentPage !== 1) {
+    if (currentPage !== firstIndex) {
       setCurrentPage(currentPage - 1);
     }
   }
   function nextPage() {
-    if (currentPage !== nPageUpcomingEvents) {
+    if (currentPage !== lastIndex) {
       setCurrentPage(currentPage + 1);
     }
   }
   function changeCPage(id: number) {
     setCurrentPage(id);
   }
-
   const filteredItems = useMemo(() => {
-    let tempItems = upcomingEventsList; // Assuming 'data' is your original array of items
+    let tempItems = pastEventsList; // Assuming 'data' is your original array of items
 
     if (filters.searchText) {
       tempItems = tempItems.filter((item) =>
@@ -81,19 +74,23 @@ export default function UpComingEventListing({
     }
 
     return tempItems;
-  }, [upcomingEventsList, filters, startDate, endDate]);
-
+  }, [pastEventsList, filters, startDate, endDate]);
   return (
     <section className="flex flex-col gap-8">
       <div className="flex justify-between">
         <h1 className="text-2xl font-medium text-secondary">Upcoming Events</h1>
-        <button
-          class="bg-transparent  font-normal mx-2  border-transparent"
-          onClick={toggleCollapse}
-        >
-          <ListFilter />
-        </button>
+        {pastEventsList.length === 0 ? (
+          ""
+        ) : (
+          <button
+            class="bg-transparent  font-normal mx-2  border-transparent"
+            onClick={toggleCollapse}
+          >
+            <ListFilter />
+          </button>
+        )}
       </div>
+      <h1 className="text-2xl font-medium text-secondary my-4">Past Events</h1>
       {isOPen && (
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-3 overflow-hidden">
           <div>
@@ -101,7 +98,9 @@ export default function UpComingEventListing({
               className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-1 pr-8 rounded shadow focus:outline-none focus:shadow-outline"
               placeholder="Search by name..."
               value={filters.searchText}
-              onChange={onchange}
+              onChange={(e: any) =>
+                setFilters((prev) => ({ ...prev, searchText: e.target.value }))
+              }
             />
           </div>
           <div class="">
@@ -144,8 +143,8 @@ export default function UpComingEventListing({
         </div>
       )}
 
-      {upcomingEvents.length === 0 ? (
-        <p>no Upcoming events</p>
+      {pastEventsList.length === 0 ? (
+        <p>no Past Events</p>
       ) : (
         <>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 *:rounded-sm">
@@ -155,7 +154,7 @@ export default function UpComingEventListing({
           </div>
           <PaginationEvent
             currentPage={currentPage}
-            nPage={nPageUpcomingEvents}
+            nPage={nPagePastEvents}
             changeCPage={changeCPage}
             nextPage={nextPage}
             prePage={prePage}

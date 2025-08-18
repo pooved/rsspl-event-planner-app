@@ -1,5 +1,5 @@
 import { useContext } from "preact/hooks";
-import PastEventListing from "./PastEventListing";
+import PastEventListing from "../components/PastEventListing";
 import { EventContext } from "../store/EventContext";
 
 export default function PastEvent() {

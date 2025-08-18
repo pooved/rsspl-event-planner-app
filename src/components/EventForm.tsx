@@ -28,6 +28,8 @@ export default function EventForm({
   });
   const [selectedFile, setSelectedFile] = useState<string | null>(null);
   const [previousImageUrl, setPreviousImageUrl] = useState("event1.webp");
+  const [errors, setErrors] = useState<any>({});
+
   function handleChange(e: any) {
     const file = e.target.files[0];
     if (file) {
@@ -78,13 +80,38 @@ export default function EventForm({
       imageUrl: formData.imageUrl,
       category: formData.category,
     };
-    if (isEditing && id) {
-      updateEvent({ id, ...eventData });
-    } else {
-      addEvent(eventData);
+    const validationErrors: any = {};
+    if (!formData.title) {
+      validationErrors.title = "Title is Required";
     }
+    if (!formData.description) {
+      validationErrors.description = "Description is Required";
+    }
+    if (!formData.date) {
+      validationErrors.date = "date is Required";
+    }
+    if (!formData.location) {
+      validationErrors.location = "location is Required";
+    }
+    if (!formData.organizer) {
+      validationErrors.organizer = "organizer is Required";
+    }
+    if (!selectedFile) {
+      validationErrors.imageUrl = "image is Required";
+    }
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+    } else {
+      setErrors({});
 
-    navigate("/");
+      if (isEditing && id) {
+        updateEvent({ id, ...eventData });
+      } else {
+        addEvent(eventData);
+      }
+
+      navigate("/");
+    }
   }
   function handleCancel() {
     navigate("/");
@@ -108,6 +135,7 @@ export default function EventForm({
             onChange={handleInputChange}
             value={formData.title}
           />
+          {errors.title && <span className="text-red-500">{errors.title}</span>}
         </div>
         <div class="mb-4">
           <label
@@ -124,6 +152,9 @@ export default function EventForm({
             onChange={handleInputChange}
             value={formData.description}
           />
+          {errors.description && (
+            <span className="text-red-500">{errors.description}</span>
+          )}
         </div>
         <div class="mb-4">
           <label class="block text-gray-700 text-sm font-bold mb-2" for="date">
@@ -138,6 +169,7 @@ export default function EventForm({
             onChange={handleInputChange}
             value={formData.date}
           />
+          {errors.date && <span className="text-red-500">{errors.date}</span>}
         </div>
         <div class="mb-4">
           <label
@@ -155,6 +187,9 @@ export default function EventForm({
             onChange={handleInputChange}
             value={formData.location}
           />
+          {errors.location && (
+            <span className="text-red-500">{errors.location}</span>
+          )}
         </div>
         <div class="mb-4">
           <label
@@ -172,6 +207,9 @@ export default function EventForm({
             onChange={handleInputChange}
             value={formData.organizer}
           />
+          {errors.organizer && (
+            <span className="text-red-500">{errors.organizer}</span>
+          )}
         </div>
         <div class="mb-4">
           <label
@@ -206,6 +244,9 @@ export default function EventForm({
             onChange={handleChange}
           />
           {selectedFile && <img src={previousImageUrl} />}
+          {errors.imageUrl && (
+            <span className="text-red-500">{errors.imageUrl}</span>
+          )}
         </div>
 
         <div class="flex gap-8">

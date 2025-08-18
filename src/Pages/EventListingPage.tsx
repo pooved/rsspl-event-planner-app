@@ -1,7 +1,7 @@
 import { useContext } from "preact/hooks";
 import { EventContext } from "../store/EventContext";
-import UpComingEventListing from "./UpComingEventListing";
-import PastEventListing from "./PastEventListing";
+import UpComingEventListing from "../components/UpComingEventListing";
+import PastEventListing from "../components/PastEventListing";
 
 export default function EventListingPage() {
   const context = useContext(EventContext);
