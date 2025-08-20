@@ -4,6 +4,7 @@ import UpComingEventListing from "../components/UpComingEventListing";
 import PastEventListing from "../components/PastEventListing";
 
 export default function EventListingPage() {
+  //consuming context
   const context = useContext(EventContext);
 
   if (!context) {
@@ -11,6 +12,7 @@ export default function EventListingPage() {
   }
   const { state } = context;
   const { events, category } = state;
+
   return (
     <>
       <UpComingEventListing events={events} category={category} />

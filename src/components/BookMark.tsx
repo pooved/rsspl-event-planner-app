@@ -6,11 +6,15 @@ export default function BookMark({ event }: { event: IEvent }) {
   const [isBookMarked, setIsBookMarked] = useState(false);
 
   useEffect(() => {
-    // Check localStorage
-    const storedBookMarks = JSON.parse(
-      localStorage.getItem("bookmarks") || "[]"
-    );
-    setIsBookMarked(storedBookMarks.includes(event.id));
+    try {
+      // Check localStorage
+      const storedBookMarks = JSON.parse(
+        localStorage.getItem("bookmarks") || "[]"
+      );
+      setIsBookMarked(storedBookMarks.includes(event.id));
+    } catch (err) {
+      console.error("Error fetching data:", err);
+    }
   }, [event.id]);
 
   const handleBookMarkToggle = () => {

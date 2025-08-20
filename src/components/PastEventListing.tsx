@@ -33,24 +33,45 @@ export default function PastEventListing({
   const [startDate, setStartDate] = useState<Date | null>(null);
   const [endDate, setEndDate] = useState<Date | null>(null);
   const [isOPen, setIsOpen] = useState(false);
+
+  //filter toggle button
   const toggleCollapse = () => {
-    setIsOpen(!isOPen); // Toggle the state
+    try {
+      setIsOpen(!isOPen);
+    } catch (error: any) {
+      console.error("Error-toggleCollapse:", error);
+    }
   };
+
+  //pagination buttons
   function prePage() {
-    if (currentPage !== firstIndex) {
-      setCurrentPage(currentPage - 1);
+    try {
+      if (currentPage !== firstIndex) {
+        setCurrentPage(currentPage - 1);
+      }
+    } catch (error: any) {
+      console.error("Error-prePage:", error);
     }
   }
   function nextPage() {
-    if (currentPage !== lastIndex) {
-      setCurrentPage(currentPage + 1);
+    try {
+      if (currentPage !== lastIndex) {
+        setCurrentPage(currentPage + 1);
+      }
+    } catch (error: any) {
+      console.error("Error-nextPage:", error);
     }
   }
   function changeCPage(id: number) {
-    setCurrentPage(id);
+    try {
+      setCurrentPage(id);
+    } catch (error: any) {
+      console.error("Error-changeCPage:", error);
+    }
   }
+  //filters
   const filteredItems = useMemo(() => {
-    let tempItems = pastEventsList; // Assuming 'data' is your original array of items
+    let tempItems = pastEventsList;
 
     if (filters.searchText) {
       tempItems = tempItems.filter((item) =>
@@ -78,7 +99,9 @@ export default function PastEventListing({
   return (
     <section className="flex flex-col gap-8">
       <div className="flex justify-between">
-        <h1 className="text-2xl font-medium text-secondary">Upcoming Events</h1>
+        <h1 className="text-2xl font-medium text-secondary my-4">
+          Past Events
+        </h1>
         {pastEventsList.length === 0 ? (
           ""
         ) : (
@@ -90,7 +113,7 @@ export default function PastEventListing({
           </button>
         )}
       </div>
-      <h1 className="text-2xl font-medium text-secondary my-4">Past Events</h1>
+
       {isOPen && (
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-3 overflow-hidden">
           <div>
@@ -144,7 +167,7 @@ export default function PastEventListing({
       )}
 
       {pastEventsList.length === 0 ? (
-        <p>no Past Events</p>
+        <p className="text-center text-2xl">no Upcoming events</p>
       ) : (
         <>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 *:rounded-sm">

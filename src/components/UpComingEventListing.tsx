@@ -3,7 +3,7 @@ import PaginationEvent from "./PaginationEvent";
 import type { FilterCriteria, ICategory, IEvent } from "../types/event";
 import DatePicker from "react-datepicker"; // Example using react-datepicker
 import "react-datepicker/dist/react-datepicker.css";
-import { CalculatorIcon, Funnel, ListFilter } from "lucide-react";
+import { ListFilter } from "lucide-react";
 import EventCards from "./EventCards";
 
 export default function UpComingEventListing({
@@ -39,21 +39,40 @@ export default function UpComingEventListing({
   const [endDate, setEndDate] = useState<Date | null>(null);
   const [isOPen, setIsOpen] = useState(false);
 
+  //filter toggle button
   const toggleCollapse = () => {
-    setIsOpen(!isOPen); // Toggle the state
+    try {
+      setIsOpen(!isOPen);
+    } catch (error: any) {
+      console.error("Error-toggleCollapse:", error);
+    }
   };
+
+  //pagination buttons
   function prePage() {
-    if (currentPage !== 1) {
-      setCurrentPage(currentPage - 1);
+    try {
+      if (currentPage !== firstIndex) {
+        setCurrentPage(currentPage - 1);
+      }
+    } catch (error: any) {
+      console.error("Error-prePage:", error);
     }
   }
   function nextPage() {
-    if (currentPage !== nPageUpcomingEvents) {
-      setCurrentPage(currentPage + 1);
+    try {
+      if (currentPage !== lastIndex) {
+        setCurrentPage(currentPage + 1);
+      }
+    } catch (error: any) {
+      console.error("Error-nextPage:", error);
     }
   }
   function changeCPage(id: number) {
-    setCurrentPage(id);
+    try {
+      setCurrentPage(id);
+    } catch (error: any) {
+      console.error("Error-changeCPage:", error);
+    }
   }
 
   const filteredItems = useMemo(() => {
@@ -149,7 +168,7 @@ export default function UpComingEventListing({
       )}
 
       {upcomingEvents.length === 0 ? (
-        <p>no Upcoming events</p>
+        <p className="text-center text-2xl">no Upcoming events</p>
       ) : (
         <>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 *:rounded-sm">

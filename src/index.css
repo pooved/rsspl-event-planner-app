@@ -5,3 +5,9 @@
   --color-light: oklch(70.4% 0.14 182.503);
   --color-dark: #181818;
 }
+.active-link {
+  color: oklch(70.4% 0.14 182.503);
+}
+.active {
+  color: oklch(100% 0.00011 271.152);
+}

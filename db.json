@@ -1,26 +1,6 @@
 {
   "events": [
     {
-      "id": "cc6d",
-      "title": "Adit Music",
-      "description": "kjkjk",
-      "date": "2025-08-16",
-      "location": "Panjim",
-      "organizer": "dsd",
-      "imageUrl": "blob:http://localhost:5173/a55b1c3f-4d8b-42dc-b082-1c61bc1ab96d",
-      "category": "music"
-    },
-    {
-      "id": "ef2f",
-      "title": "Adit Music",
-      "description": "gfg",
-      "date": "2025-08-16",
-      "location": "Panjim",
-      "organizer": "dsd",
-      "imageUrl": "blob:http://localhost:5173/66496b8c-4a88-4bc4-9f01-f3f3bbc20f84",
-      "category": "dance"
-    },
-    {
       "id": "b2c8",
       "title": "Adit Music",
       "description": "ghg",
@@ -28,16 +8,6 @@
       "location": "Panjim",
       "organizer": "dsd",
       "imageUrl": "blob:http://localhost:5173/e5bebca2-ab54-4094-894e-9af58b1c49d2",
-      "category": "music"
-    },
-    {
-      "id": "3d8e",
-      "title": "Adit Music",
-      "description": "hjhj",
-      "date": "2025-08-17",
-      "location": "Panjim",
-      "organizer": "dsd",
-      "imageUrl": "blob:http://localhost:5173/c87f38cb-07fc-47e7-8987-dc177d1f81dd",
       "category": "music"
     },
     {
@@ -79,36 +49,6 @@
       "organizer": "2222",
       "imageUrl": "event1.webp",
       "category": "music"
-    },
-    {
-      "id": "f93d",
-      "title": "Adit Music",
-      "description": "fgfgf",
-      "date": "2025-08-21",
-      "location": "ffg",
-      "organizer": "fgfg",
-      "imageUrl": "blob:http://localhost:5173/616facfc-ab21-4b59-85df-0ad3479816ad",
-      "category": "music"
-    },
-    {
-      "id": "a0d0",
-      "title": "Adit Music",
-      "description": "gfgfg",
-      "date": "2025-08-21",
-      "location": "ffg",
-      "organizer": "fgfg",
-      "imageUrl": "blob:http://localhost:5173/00934fd5-61cd-4533-8797-93be7f4445dd",
-      "category": "music"
-    },
-    {
-      "id": "c76b",
-      "title": "Adit Music",
-      "description": "dgdg",
-      "date": "2025-08-21",
-      "location": "ffg",
-      "organizer": "fgfg",
-      "imageUrl": "blob:http://localhost:5173/ddac2dbd-7c51-4a3b-a0b2-d27719a5e1e6",
-      "category": "music"
     }
   ],
   "category": [
@@ -120,5 +60,6 @@
       "id": "222",
       "name": "dance"
     }
-  ]
+  ],
+  "users": [{ "userName": "Pooja", "password": "Vishal5456" }]
 }

@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
 import type { IEvent } from "../types/event";
-import { Calendar, MapPin } from "lucide-react";
 import BookMark from "../components/BookMark";
 
 export default function EventCard({ event }: { event: IEvent }) {
   const { id, title, description, date, imageUrl } = event;
-  const dateString = date; // Example YYYY-MM-DD string
+  const dateString = date;
   const dateObject = new Date(dateString);
   const monthNameShort = dateObject.toLocaleString("en-US", { month: "short" });
   const dayOfMonth = dateObject.toLocaleString("en-US", { day: "2-digit" });

@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Calendar, Clock, Edit, MapPin, Trash2, X } from "lucide-react";
 
 export default function EventDetailsPage() {
+  //consuming context
   const context = useContext(EventContext);
 
   if (!context) {
@@ -55,6 +56,10 @@ export default function EventDetailsPage() {
       <div className="space-y-4">
         <h2 className="text-xl text-secondary font-bold">Organizer</h2>
         <p>{event?.organizer}</p>
+      </div>
+      <div className="space-y-4">
+        <h2 className="text-xl text-secondary font-bold">Category</h2>
+        <p>{event?.category}</p>
       </div>
       {showDeleteConfirm && (
         <div className="fixed flex items-center justify-center p-4 z-50 inset-0">

@@ -26,7 +26,7 @@ export default function PaginationEvent({
         <a
           href="#"
           className={`${
-            currentPage === n ? "active" : ""
+            currentPage === n ? "active-link " : ""
           } relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 inset-ring inset-ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0`}
           onClick={() => changeCPage(n)}
         >

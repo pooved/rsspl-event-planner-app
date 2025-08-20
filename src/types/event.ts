@@ -14,13 +14,25 @@ export interface ICategory {
   id: "string";
   name: "string";
 }
+export interface IUser {
+  userName: "string";
+  password: "string";
+}
 export interface InitialStateType {
   events: IEvent[];
   category: ICategory[];
   loading: boolean;
   error: string | null;
 }
-
+export interface AuthState {
+  isAuthenticated: boolean;
+  user: IUser | null;
+}
+export type AuthAction =
+  | { type: "FETCH_LOGIN"; payload: { users: IUser[] } }
+  | { type: "FETCH_LOGIN_ERROR"; payload: string }
+  | { type: "LOGIN_SUCCESS"; payload: { user: IUser } }
+  | { type: "LOGOUT" };
 export type Action =
   | { type: "FETCH_ITEMS_REQUEST" }
   | {
@@ -30,8 +42,7 @@ export type Action =
   | { type: "FETCH_ITEMS_FAILURE"; payload: string }
   | { type: "ADD_EVENT"; payload: IEvent }
   | { type: "DELETE_EVENT"; payload: string }
-  | { type: "UPDATE_EVENT"; payload: IEvent }
-  | { type: "SET_FILTER"; payload: Date };
+  | { type: "UPDATE_EVENT"; payload: IEvent };
 
 export const InitialState: InitialStateType = {
   events: [],
@@ -39,13 +50,22 @@ export const InitialState: InitialStateType = {
   loading: false,
   error: null,
 };
-
+export const InitialAuthState: AuthState = {
+  isAuthenticated: false,
+  user: null,
+};
 export interface EventContextProps {
   state: InitialStateType;
   dispatch: Dispatch<Action>;
   addEvent: (event: Omit<IEvent, "id">) => void;
   deleteEvent: (id: string) => void;
   updateEvent: (event: IEvent) => void;
+}
+export interface AuthContextType {
+  state: AuthState;
+  dispatch: Dispatch<AuthAction>;
+  login: (user: IUser) => void;
+  logout: () => void;
 }
 export interface FilterCriteria {
   searchText: string;

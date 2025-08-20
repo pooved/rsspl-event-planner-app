@@ -1,13 +1,16 @@
 import { Link } from "react-router-dom";
 import { useState } from "preact/hooks";
 import NavLinks from "./NavLinks";
-import ThemeToggle from "./ThemeToggle";
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
 
   function handleToggleNavbar() {
-    setIsOpen(!isOpen);
+    try {
+      setIsOpen(!isOpen);
+    } catch (error: any) {
+      console.error("Error-handleToggleNavbar:", error);
+    }
   }
   return (
     <header class="flex items-center justify-between flex-wrap bg-light p-6 dark:bg-dark">

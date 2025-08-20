@@ -4,7 +4,7 @@ import {
   type InitialStateType,
 } from "../types/event";
 
-const EventReducer = (
+export const EventReducer = (
   state = InitialState,
   action: Action
 ): InitialStateType => {
@@ -42,5 +42,3 @@ const EventReducer = (
       return state;
   }
 };
-
-export default EventReducer;
