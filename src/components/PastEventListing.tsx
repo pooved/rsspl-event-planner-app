@@ -46,7 +46,7 @@ export default function PastEventListing({
   //pagination buttons
   function prePage() {
     try {
-      if (currentPage !== firstIndex) {
+      if (currentPage !== 1) {
         setCurrentPage(currentPage - 1);
       }
     } catch (error: any) {
@@ -55,7 +55,7 @@ export default function PastEventListing({
   }
   function nextPage() {
     try {
-      if (currentPage !== lastIndex) {
+      if (currentPage !== nPagePastEvents) {
         setCurrentPage(currentPage + 1);
       }
     } catch (error: any) {

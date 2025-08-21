@@ -1,53 +1,13 @@
 {
   "events": [
     {
-      "id": "b2c8",
-      "title": "Adit Music",
-      "description": "ghg",
-      "date": "2025-08-16",
+      "id": "e417",
+      "title": "Adam Music Concert",
+      "description": "Lorem ipsum dolor sit amet . The graphic and typographic operators know this well, in reality all the professions dealing with the universe of communication have a stable relationship with these words, but what is it? Lorem ipsum is a dummy text without any sense.",
+      "date": "2025-08-23",
       "location": "Panjim",
-      "organizer": "dsd",
-      "imageUrl": "blob:http://localhost:5173/e5bebca2-ab54-4094-894e-9af58b1c49d2",
-      "category": "music"
-    },
-    {
-      "id": "cbda",
-      "title": "Adit Music",
-      "description": "jkjkj",
-      "date": "2025-08-16",
-      "location": "Panjim",
-      "organizer": "",
-      "imageUrl": "blob:http://localhost:5173/3a188b79-d492-4704-bc74-905a9b00f858",
-      "category": "music"
-    },
-    {
-      "id": "ba33",
-      "title": "Adit Music",
-      "description": "hjgjgjg",
-      "date": "2025-08-20",
-      "location": "Panjim",
-      "organizer": "2222",
-      "imageUrl": "event1.webp",
-      "category": "music"
-    },
-    {
-      "id": "6ee5",
-      "title": "Adit Music",
-      "description": "ghghg",
-      "date": "2025-08-20",
-      "location": "Panjim",
-      "organizer": "2222",
-      "imageUrl": "event1.webp",
-      "category": "music"
-    },
-    {
-      "id": "118d",
-      "title": "Adit Music",
-      "description": "ghghg",
-      "date": "2025-08-20",
-      "location": "jjjjj",
-      "organizer": "2222",
-      "imageUrl": "event1.webp",
+      "organizer": "Ved Events",
+      "imageUrl": "blob:http://localhost:5173/a92dc504-4473-4e75-9d9b-576a8e86ef46",
       "category": "music"
     }
   ],
@@ -61,5 +21,11 @@
       "name": "dance"
     }
   ],
-  "users": [{ "userName": "Pooja", "password": "Vishal5456" }]
+  "users": [
+    {
+      "userName": "Pooja",
+      "password": "Vishal5456",
+      "id": "b11a"
+    }
+  ]
 }

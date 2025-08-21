@@ -51,7 +51,7 @@ export default function UpComingEventListing({
   //pagination buttons
   function prePage() {
     try {
-      if (currentPage !== firstIndex) {
+      if (currentPage !== 1) {
         setCurrentPage(currentPage - 1);
       }
     } catch (error: any) {
@@ -60,7 +60,7 @@ export default function UpComingEventListing({
   }
   function nextPage() {
     try {
-      if (currentPage !== lastIndex) {
+      if (currentPage !== nPageUpcomingEvents) {
         setCurrentPage(currentPage + 1);
       }
     } catch (error: any) {
