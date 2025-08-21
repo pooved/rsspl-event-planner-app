@@ -35,7 +35,7 @@ export default function EventForm({
 
   //Image state handling
   const [selectedFile, setSelectedFile] = useState<string | null>(null);
-  const [previousImageUrl, setPreviousImageUrl] = useState("event1.webp");
+  const [previousImageUrl, setPreviousImageUrl] = useState("");
 
   //form on input change
   function handleImageChange(e: any) {
@@ -120,9 +120,7 @@ export default function EventForm({
       if (!formData.organizer) {
         validationErrors.organizer = "organizer is Required";
       }
-      if (!selectedFile) {
-        validationErrors.imageUrl = "image is Required";
-      }
+
       if (Object.keys(validationErrors).length > 0) {
         setErrors(validationErrors);
       } else {
@@ -277,9 +275,9 @@ export default function EventForm({
             onChange={handleImageChange}
           />
           {selectedFile && <img src={previousImageUrl} />}
-          {errors.imageUrl && (
+          {/* {errors.imageUrl && (
             <span className="text-red-500">{errors.imageUrl}</span>
-          )}
+          )} */}
         </div>
 
         <div class="flex gap-8">

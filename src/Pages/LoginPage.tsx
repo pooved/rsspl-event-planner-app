@@ -7,38 +7,38 @@ export default function Login() {
   //navigation
   const navigate = useNavigate();
 
- const context = useContext(AuthContext);
- 
-   if (!context) {
-     throw new Error("Error");
-   }
-   const {state,login}=context;
-        const [username, setUsername] = useState('');
-        const [password, setPassword] = useState('');
-        const [error,setError]=useState("");
-  const handleSubmit = async (e:any) => {
-            e.preventDefault();
-           try {
-                  const response = await fetch("http://localhost:8000/users");
-                  if (!response.ok) {
-                    throw new Error("Failed to fetch items");
-                  }
-                  const users: IUser[] = await response.json();
-                 const foundUser= users.find((user)=>user.userName===username && user.password===password)
-                     if (foundUser) {
-                login( foundUser ); 
-                return navigate("/");
-            } else {
-                setError("Invalid Username and Password");
-            }
-                } catch (error: any) {
-                 setError("Invalid Username and Password");
-                  console.error('Login error:', error);
-                }
-        
-        };
+  const context = useContext(AuthContext);
 
-      
+  if (!context) {
+    throw new Error("Error");
+  }
+  const { state, login } = context;
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("http://localhost:8000/users");
+      if (!response.ok) {
+        throw new Error("Failed to fetch items");
+      }
+      const users: IUser[] = await response.json();
+      const foundUser = users.find(
+        (user) => user.userName === username && user.password === password
+      );
+      if (foundUser) {
+        login(foundUser);
+        return navigate("/");
+      } else {
+        setError("Invalid Username and Password");
+      }
+    } catch (error: any) {
+      setError("Invalid Username and Password");
+      console.error("Login error:", error);
+    }
+  };
+
   return (
     <>
       <div class="flex items-center justify-center min-h-screen bg-gray-100">
