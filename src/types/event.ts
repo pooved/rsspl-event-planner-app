@@ -29,9 +29,7 @@ export interface AuthState {
   user: IUser | null;
 }
 export type AuthAction =
-  | { type: "FETCH_LOGIN"; payload: { users: IUser[] } }
-  | { type: "FETCH_LOGIN_ERROR"; payload: string }
-  | { type: "LOGIN_SUCCESS"; payload: { user: IUser } }
+  | { type: "LOGIN_SUCCESS"; payload: IUser }
   | { type: "LOGOUT" };
 export type Action =
   | { type: "FETCH_ITEMS_REQUEST" }

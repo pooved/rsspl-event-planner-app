@@ -1,42 +1,50 @@
 import { useContext, useState } from "preact/hooks";
 import type { IUser } from "../types/event";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../store/AuthContext";
 
 export default function Login() {
   //navigation
   const navigate = useNavigate();
 
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const handleLogin = async (e: any) => {
-    e.preventDefault();
-    setError(""); // Clear previous errors
+ const context = useContext(AuthContext);
+ 
+   if (!context) {
+     throw new Error("Error");
+   }
+   const {state,login}=context;
+        const [username, setUsername] = useState('');
+        const [password, setPassword] = useState('');
+        const [error,setError]=useState("");
+  const handleSubmit = async (e:any) => {
+            e.preventDefault();
+           try {
+                  const response = await fetch("http://localhost:8000/users");
+                  if (!response.ok) {
+                    throw new Error("Failed to fetch items");
+                  }
+                  const users: IUser[] = await response.json();
+                 const foundUser= users.find((user)=>user.userName===username && user.password===password)
+                     if (foundUser) {
+                login( foundUser ); 
+                return navigate("/");
+            } else {
+                setError("Invalid Username and Password");
+            }
+                } catch (error: any) {
+                 setError("Invalid Username and Password");
+                  console.error('Login error:', error);
+                }
+        
+        };
 
-    try {
-      const response = await fetch("http://localhost:8000/users");
-      const users = await response.json();
-
-      const foundUser = users.find(
-        (user: any) => user.userName === username && user.password === password
-      );
-
-      if (foundUser) {
-        navigate("/");
-      } else {
-        setError("Invalid username or password.");
-      }
-    } catch (err) {
-      setError("Error connecting to server.");
-      console.error("Login error:", err);
-    }
-  };
+      
   return (
     <>
       <div class="flex items-center justify-center min-h-screen bg-gray-100">
         <div class="bg-white p-8 rounded-lg shadow-md w-96">
           <h2 class="text-2xl font-bold mb-6 text-center">Login</h2>
-          <form onSubmit={handleLogin}>
+          <form onSubmit={handleSubmit}>
             <div class="mb-4">
               <label
                 for="email"
@@ -72,7 +80,7 @@ export default function Login() {
 
             <button
               type="submit"
-              class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
+              class="font-bold dark:bg-black border-secondary bg-teal-500 py-2 px-4 text-white rounded focus:outline-none focus:shadow-outline"
             >
               Sign In
             </button>

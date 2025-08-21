@@ -9,6 +9,7 @@ import { EventContextProvider } from "./store/EventContext";
 import PastEventListing from "./components/PastEventListing";
 import PastEventPage from "./Pages/PastEventPage";
 import LoginPage from "./Pages/LoginPage";
+import { AuthContextProvider } from "./store/AuthContext";
 
 const routes = [
   {
@@ -46,8 +47,10 @@ const routes = [
 const router = createBrowserRouter(routes);
 export default function App() {
   return (
+      <AuthContextProvider>
     <EventContextProvider>
       <RouterProvider router={router} />
     </EventContextProvider>
+    </AuthContextProvider>
   );
 }
