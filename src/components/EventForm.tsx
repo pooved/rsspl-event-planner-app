@@ -35,7 +35,7 @@ export default function EventForm({
 
   //Image state handling
   const [selectedFile, setSelectedFile] = useState<string | null>(null);
-  const [previousImageUrl, setPreviousImageUrl] = useState("");
+  const [previousImageUrl, setPreviousImageUrl] = useState("event2.jpeg");
 
   //form on input change
   function handleImageChange(e: any) {
