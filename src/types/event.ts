@@ -70,3 +70,9 @@ export interface FilterCriteria {
   category: string;
   date: Date | null;
 }
+export interface ConfirmationBoxProps {
+  message: string;
+  onConfirm: () => void;
+  onCancel: () => void;
+  isOpen: boolean;
+}

@@ -1,21 +1,23 @@
 import { Link } from "react-router-dom";
 import type { IEvent } from "../types/event";
 import BookMark from "../components/BookMark";
-
+import fallback from "../assets/event1.webp";
+import { useState } from "preact/compat";
 export default function EventCard({ event }: { event: IEvent }) {
   const { id, title, description, date, imageUrl } = event;
   const dateString = date;
   const dateObject = new Date(dateString);
   const monthNameShort = dateObject.toLocaleString("en-US", { month: "short" });
   const dayOfMonth = dateObject.toLocaleString("en-US", { day: "2-digit" });
+  const [imageError, setImageError] = useState(false);
   return (
     <div className="grid grid-rows-[min-content_min-content_1fr] rounded dark:bg-dark dark:text-white overflow-hidden shadow-lg relative duration-200 ">
       <div class="max-h-80 min-h-50 overflow-y-hidden">
         <img
           class="w-full"
-          src={imageUrl}
+          src={imageError ? fallback : imageUrl}
           loading="lazy"
-          alt="Sunset in the mountains"
+          onError={() => setImageError(true)}
         />
         <div className="absolute top-3 right-3 bg-light text-white  p-2 text-center">
           <p>{monthNameShort}</p>
